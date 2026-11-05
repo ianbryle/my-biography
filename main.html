@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- CRUCIAL FOR MOBILE PHONES: Tells browsers to adjust scale to device width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Biography</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #091326, #0f2040, #1a3a66, #112847);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #e0ffe0;
+            padding: 40px 20px;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Background Gradient Animation */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* CONTAINER (Desktop Base Styles) */
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(15, 32, 64, 0.55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 45px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 255, 153, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            animation: fadeInContainer 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s ease;
+        }
+
+        @keyframes fadeInContainer {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MENU (Desktop) */
+        .menu {
+            position: relative;
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .menu-button {
+            background: linear-gradient(135deg, #00ff99, #00cc77);
+            color: #0f2040;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 255, 153, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .menu-button:hover {
+            background: linear-gradient(135deg, #33ffad, #00ff99);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(0, 255, 153, 0.5);
+        }
+
+        .menu-content {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            margin-top: 12px;
+            width: 260px;
+            z-index: 10;
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        }
+
+        .menu:hover .menu-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .menu-content a {
+            display: block;
+            background: rgba(15, 32, 64, 0.95);
+            color: #ff9933;
+            padding: 10px 15px;
+            margin: 6px 0;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 153, 51, 0.2);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+
+        .menu-content a:hover {
+            background-color: #00ff99;
+            color: #0f2040;
+            transform: translateX(5px);
+            box-shadow: 0 0 12px rgba(0, 255, 153, 0.4);
+        }
+
+        /* HEADINGS & CONTENT (Desktop) */
+        h1 {
+            color: #00ff99;
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            border-bottom: 2px solid rgba(0, 255, 153, 0.3);
+            padding-bottom: 15px;
+            margin-bottom: 35px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
+        }
+
+        .profile-img-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 35px;
+        }
+
+        .profile-img {
+            display: block;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #00ff99;
+            box-shadow: 0 0 20px rgba(0, 255, 153, 0.4);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.08) rotate(2deg);
+            border-color: #ff9933;
+            box-shadow: 0 0 35px rgba(255, 153, 51, 0.6);
+        }
+
+        h2 {
+            color: #ff9933;
+            font-size: 22px;
+            margin: 30px 0 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background-color: #00ff99;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #ccffcc;
+            padding-left: 18px;
+            border-left: 2px solid rgba(0, 255, 153, 0.15);
+        }
+
+        strong {
+            color: #00ff99;
+        }
+
+        a {
+            color: #ff9933;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #00ff99;
+            text-decoration: underline;
+        }
+
+        /* =========================================================
+           MOBILE / PHONE VIEW (Triggers on screens 600px wide or smaller)
+           ========================================================= */
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 15px 10px; /* Reduces outer margin for phone screens */
+            }
+
+            .container {
+                padding: 25px 18px; /* Compact padding to maximize readable space */
+                border-radius: 14px;
+            }
+
+            h1 {
+                font-size: 22px; /* Smaller main heading for small screens */
+                letter-spacing: 1px;
+                margin-bottom: 25px;
+            }
+
+            h2 {
+                font-size: 18px;
+                margin: 20px 0 8px;
+            }
+
+            p {
+                font-size: 14px; /* Scaled font size for phone reading */
+                padding-left: 12px;
+            }
+
+            .profile-img {
+                width: 130px; /* Reduced avatar size for smaller displays */
+                height: 130px;
+            }
+
+            .menu-button {
+                width: 100%; /* Stretch menu button full width for easy finger tapping */
+                padding: 14px;
+                font-size: 16px;
+            }
+
+            .menu-content {
+                width: 100%; /* Full width dropdown on phones */
+            }
+
+            .menu-content a {
+                padding: 12px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- MENU BUTTON -->
+        <div class="menu">
+            <button class="menu-button">MENU</button>
+
+            <div class="menu-content">
+                <a href="about.html" target="_blank">About Me</a>
+                <a href="fakeo.html" target="_blank">Educational Background</a>
+                <a href="hob.html" target="_blank">Hobbies and Interests</a>
+                <a href="future.html" target="_blank">Future Goals</a>
+            </div>
+        </div>
+
+        <h1>MY PERSONAL BIOGRAPHY</h1>
+
+        <div class="profile-img-container">
+            <img src="Image.jpg" alt="Profile Picture" class="profile-img">
+        </div>
+
+        <h2>About Me</h2>
+        <p>
+            My name is Ian Bryle A. Serenio. I am currently a student
+            taking Bachelor of Science in Information Technology.
+        </p>
+
+        <h2>My Educational Background</h2>
+        <p>
+            I am currently taking the BSIT program because I am interested
+            in <strong>technology</strong> and computers.
+        </p>
+
+        <h2>Hobbies and Interests</h2>
+        <p>
+            My hobbies are playing online games and bonding with friends.
+            I also enjoy learning new things about technology and computers.
+        </p>
+
+        <h2>My Future Goals</h2>
+        <p>
+            In the future, I want to become a successful IT professional.
+            My goal is to use my knowledge and skills to help solve problems
+            through technology.
+        </p>
+
+        <h2>My Favorite Website</h2>
+        <p>
+            One website that I often visit is
+            <a href="https://www.instagram.com/bry_bray0/" target="_blank">
+                Instagram
+            </a>
+        </p>
+
+    </div>
+
+</body>
+</html>
